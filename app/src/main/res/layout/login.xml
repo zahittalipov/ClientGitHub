@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme">
+
+    <LinearLayout
+        android:id="@+id/rootLoginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/password"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/password"
+            android:layout_marginTop="23dp"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Username or email address"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:enabled="true"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/signInBtn"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/password"
+            android:layout_alignRight="@+id/password"
+            android:layout_below="@+id/password"
+            android:enabled="true"
+            android:onClick="sigInClick"
+            android:text="Sign in" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/progressLoginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8b707f92"
+        android:visibility="invisible">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/progressBar"
+            android:layout_alignLeft="@+id/progressBar"
+            android:layout_alignStart="@+id/progressBar"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginBottom="41dp"
+            android:text="Loading..."
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+</RelativeLayout>
