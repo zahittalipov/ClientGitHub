@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.angelectro.zahittalipov.clientgithub.entity.User;
+import com.angelectro.zahittalipov.clientgithub.inteface.ApiGitHub;
 
 /**
  * Created by Zahit Talipov on 19.11.2015.
@@ -36,6 +37,7 @@ public class AppDelegate extends Application {
 
     public static boolean logout(Context context) {
         preferences = context.getSharedPreferences(NAME, MODE_PRIVATE);
+        ApiGitHub.ACCESS_TOKEN = null;
         SharedPreferences.Editor editor = preferences.edit();
         editor.remove("access_token");
         editor.remove("login");
@@ -67,9 +69,10 @@ public class AppDelegate extends Application {
             user.setEmail(preferences.getString("email", null));
             user.setName(preferences.getString("name", null));
             user.setUrlSystemAvatar(preferences.getString("urlSystemAvatar", null));
-            intent = new Intent(this, MainActivity.class);
+            ApiGitHub.ACCESS_TOKEN=user.getAccessToken();
+            currentUser=user;
+            Log.d("load", "appDelegate");
         }
-        Log.d("1", "app");
     }
 
 }

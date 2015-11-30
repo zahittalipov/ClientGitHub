@@ -1,8 +1,12 @@
 package com.angelectro.zahittalipov.clientgithub.inteface;
 
 
+import com.angelectro.zahittalipov.clientgithub.entity.Commit;
+import com.angelectro.zahittalipov.clientgithub.entity.Repos;
 import com.angelectro.zahittalipov.clientgithub.entity.User;
 import com.squareup.okhttp.ResponseBody;
+
+import java.util.List;
 
 import retrofit.Call;
 import retrofit.http.Field;
@@ -10,7 +14,9 @@ import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.Path;
 import retrofit.http.Query;
+import rx.Observable;
 
 /**
  * Created by Zahit Talipov on 17.11.2015.
@@ -55,4 +61,11 @@ public interface GitHubService {
                                                        @Field("state") String state,
                                                        @Field("scope") String scope,
                                                        @Field("authorize")String button);
+    @GET("user/repos")
+    Call<List<Repos>> reposUser();
+
+    @GET("repos/{login}/{name}/commits")
+    Call<List<Commit>> getCommits(@Path("login")String login,
+                                  @Path("name")String name);
+
 }

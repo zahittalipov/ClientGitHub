@@ -57,8 +57,6 @@ public class Login extends AppCompatActivity {
 
     public void sigInClick(View view) {
         progress(true);
-        login.setText("zahittalipov");
-        password.setText("aminaballuRR48");
         login(login.getText().toString(), password.getText().toString());
     }
 
@@ -70,6 +68,7 @@ public class Login extends AppCompatActivity {
             public void onResponse(Response<User> response, Retrofit retrofit) {
                 Log.d("getUserResponseCode", "" + response.code());
                 final User user = response.body();
+                user.setAccessToken(ApiGitHub.ACCESS_TOKEN);
                 Log.d("Authorization", user.getLogin() + user.getEmail());
                 AppDelegate.saveUser(user, getApplicationContext());
                 progress(false);
